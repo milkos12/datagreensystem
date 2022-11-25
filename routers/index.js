@@ -6,18 +6,18 @@ const farmsRouter = require('./farms/farms.router');
 const gaugesRouter = require('./gauges/gauges.router');
 const providersRouter = require('./providers/providers.router');
 const referenceRouter = require('./references/references.router');
-const varientesRouter = require('./varieties/varieties.router');
+const varietesRouter = require('./varieties/varieties.router');
 
 function routerApi(app) {
   const router = express.Router();
-  router.use('/api/v1',router);
+  app.use('/api/v1',router);
   router.use('/colors', colorsRouter);
   router.use('/especies', especiesRouter);
   router.use('/farms', farmsRouter);
   router.use('/gagues', gaugesRouter);
   router.use('/providers', providersRouter);
   router.use('/references', referenceRouter);
-  router.use('/varientes', varientesRouter);
+  router.use('/varietes', varietesRouter);
 }
 
 module.exports = routerApi;
