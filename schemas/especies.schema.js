@@ -1,14 +1,14 @@
 const Joi = require('joi');
 
 const id = Joi.number();
-const nombre = Joi.string().min(3).max(45);
+const name = Joi.string().min(3).max(45);
 
 const createEspeciesSchema = Joi.object({
-  nombre: nombre.required()
+  name: name.required()
 });
 
 const updateEspeciesSchema = Joi.object({
-  nombre: nombre
+  name: name
 });
 
 const getEspecisShema = Joi.object({

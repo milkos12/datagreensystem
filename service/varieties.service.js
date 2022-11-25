@@ -1,10 +1,15 @@
+
 class VarietiesService {
+
+  constructor() {
+
+  }
 
   create() {
 
   }
 
-  find() {
+  async find() {
 
   }
 

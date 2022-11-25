@@ -1,11 +1,18 @@
+const { models } = require('./../libs/sequelize');
+
 class ColorsService {
+
+  constructor() {
+
+  }
 
   create() {
 
   }
 
-  find() {
-
+  async find() {
+    const data = await models.Color.findAll();
+    return data;
   }
 
   findOne() {

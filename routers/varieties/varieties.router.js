@@ -11,7 +11,8 @@ const service = new VarientesService();
 
 router.get('/', (req, res) => {
   //consultar todos
-  res.json({massage: "hi there"})
+  const rta = service.find();
+  res.json(rta)
 });
 
 router.get('/:id',

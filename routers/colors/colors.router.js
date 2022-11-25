@@ -6,7 +6,9 @@ const ColorsService = require('../../service/colors.service');
 const router = express.Router();
 const service = new ColorsService();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  const colors = await service.find();
+  res.json(colors);
   //consultar todos
 });
 

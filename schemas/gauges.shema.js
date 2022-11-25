@@ -14,3 +14,9 @@ const updateGaugesShema = Joi.object({
 const getGaugesSchema = Joi.object({
   id: id.required()
 });
+
+module.exports = {
+  createGaugesSchema,
+  updateGaugesShema,
+  getGaugesSchema
+}
