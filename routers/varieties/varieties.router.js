@@ -9,18 +9,19 @@ const { createVarietiesSchema, updateVarietiesSchema, getVarietieSchema } = requ
 const router = express.Router();
 const service = new VarientesService();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   //consultar todos
-  const rta = service.find();
+  const rta = await service.find();
   res.json(rta)
 });
 
 router.get('/:id',
   validadorHandler(getVarietieSchema, 'params'),
-  (req, res) => {
+  async (req, res) => {
     const { id } = req.params;
     //consultar solo uno
-    res.json({massage: "hi there"})
+    const rta = await service.findOne(id);
+    res.json(rta)
 });
 
 router.post('/',

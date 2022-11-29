@@ -1,4 +1,6 @@
 
+const sequelize = require('../libs/sequelize')
+
 class VarietiesService {
 
   constructor() {
@@ -10,11 +12,14 @@ class VarietiesService {
   }
 
   async find() {
-
+    const data = await sequelize.models.Variete.findAll();
+    return data;
   }
 
-  findOne() {
+  async findOne(id) {
+    const data = await sequelize.models.Variete.findByPk(id);
 
+    return data;
   }
 
   update() {
