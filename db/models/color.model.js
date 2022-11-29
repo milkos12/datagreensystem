@@ -24,7 +24,7 @@ class Color extends Model {
     return{
       sequelize,
       tableName: COLOR_TABLE,
-      nomdelName: 'Color',
+      modelName: 'Color',
       timestamps: false
     }
 
