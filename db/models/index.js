@@ -5,7 +5,6 @@ const { Especie, EspecieSchema } = require('./especie.model');
 const { Gauge, GaugeSchema } = require('./gauge.model');
 const { Provider, ProviderSchema } = require('./provider.model');
 const { Reference, ReferenceSchema } = require('./reference.model');
-const { singularize } = require('sequelize/types/utils');
 
 function setupModels(sequelize) {
   Color.init(ColorSchema, Color.config(sequelize));

@@ -6,8 +6,10 @@ const FarmsService = require('../../service/farms.service');
 const router = express.Router();
 const service = new FarmsService();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   //consultar todos
+  const data = await service.find();
+  res.json(data);
 });
 
 router.get('/:id', (req, res) => {

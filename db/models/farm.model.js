@@ -1,4 +1,4 @@
-const { DataTypes, Model } = require('sequelize');
+const { DataTypes, Model, Sequelize } = require('sequelize');
 
 const FARM_TABLE = 'farms';
 
@@ -11,11 +11,11 @@ const FarmShema = {
   },
   name:{
     allowNull: false,
-    type: DataTypes.STRING()
+    type: DataTypes.STRING
   },
   extension:{
     allowNull: false,
-    type: DataTypes.NUMBER
+    type: DataTypes.INTEGER
   }
 }
 
@@ -25,7 +25,7 @@ class Farm extends Model{
       sequelize,
       modelName: 'Farm',
       tableName: FARM_TABLE,
-      timestamps: true
+      timestamps: false
     }
   }
 }

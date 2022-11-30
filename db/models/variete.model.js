@@ -1,7 +1,7 @@
 const { config } = require("dotenv");
 const { Sequelize, Model, DataTypes } = require("sequelize");
 
-const NOMBRE_TABLE = 'varietes';
+const VARIETE_TABLE = 'varietes';
 
 const VarietesSchema = {
   id: {
@@ -11,7 +11,7 @@ const VarietesSchema = {
     allowNull: false
   },
   name: {
-    type: DataTypes.STRING(45),
+    type: DataTypes.STRING,
     allowNull: false,
     unique: true
 
@@ -24,7 +24,7 @@ class Variete extends Model {
     return{
       sequelize,
       modelName: 'Variete',
-      tableName: NOMBRE_TABLE,
+      tableName: VARIETE_TABLE,
     }
   }
 }
@@ -32,5 +32,5 @@ class Variete extends Model {
 module.exports = {
   VarietesSchema,
   Variete,
-  NOMBRE_TABLE
+  VARIETE_TABLE
 }

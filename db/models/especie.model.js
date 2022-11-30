@@ -1,11 +1,11 @@
-const {Model, DataTypes } = require('sequelize');
+const {Model, DataTypes, Sequelize } = require('sequelize');
 
 const ESPECIE_TABLE = 'especies';
 
 const EspecieSchema = {
   id:{
     allowNull: false,
-    type: DataTypes.NUMBER,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
@@ -16,9 +16,9 @@ const EspecieSchema = {
 }
 
 class Especie extends Model{
-   static config(siqualize) {
-    return {
-      siqualize,
+   static config(sequelize) {
+    return{
+      sequelize,
       modelName: 'Especie',
       tableName: ESPECIE_TABLE,
       timestamps: true

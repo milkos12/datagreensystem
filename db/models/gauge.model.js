@@ -1,4 +1,4 @@
-const {  DataTypes, Model } = require('sequelize');
+const {  DataTypes, Model, Sequelize } = require('sequelize');
 
 const GAUGE_TABLE = 'gauges';
 
@@ -7,7 +7,7 @@ const GaugeSchema = {
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
-    type: DataTypes.NUMBER
+    type: DataTypes.INTEGER
   },
   name: {
     allowNull: false,
@@ -16,11 +16,11 @@ const GaugeSchema = {
 }
 
 class Gauge extends Model {
-  static config(siqualize){
-    return {
-      siqualize,
-      tableName: GAUGE_TABLE,
+  static config(sequelize){
+    return{
+      sequelize,
       modelName: 'gauge',
+      tableName: GAUGE_TABLE,
       timestamps: true
     }
   }

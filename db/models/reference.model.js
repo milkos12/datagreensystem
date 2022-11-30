@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, Sequelize } = require('sequelize');
 
 const REFERENCE_TABLE = 'references';
 
@@ -17,7 +17,7 @@ const ReferenceSchema = {
 
 class Reference extends Model {
   static config(sequelize){
-    return {
+    return{
       sequelize,
       tableName: REFERENCE_TABLE,
       naemModel: 'Reference',

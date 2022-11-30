@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, Sequelize } = require('sequelize');
 
 const PROVIDER_TABLE = 'providers';
 
@@ -16,13 +16,19 @@ const ProviderSchema = {
 }
 
 class Provider extends Model {
-  static config(sequelize){
+  static config(sequelize) {
 
-    return {
-    sequelize,
-    tableName, PROVIDER_TABLE,
-    modelName: 'provider',
-    timestamps: false
+    return{
+      sequelize,
+      tableName: PROVIDER_TABLE,
+      modelName: 'provider',
+      timestamps: false
+    }
   }
-  }
+}
+
+module.exports = {
+  PROVIDER_TABLE,
+  ProviderSchema,
+  Provider
 }
