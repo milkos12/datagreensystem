@@ -2,12 +2,16 @@ const express = require('express');
 
 
 const EspeciesService = require('../../service/especies.service');
+const { createEspeciesSchema, updateEspeciesSchema, getEspecisShema } = require('../../schemas/especies.schema');
+const validadorHandler = require('../../middlewares/validador.handler');
 
 const router = express.Router();
 const service = new EspeciesService();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   //consultar todos
+  const data = await service.find();
+  res.json(data)
 });
 
 router.get('/:id', (req, res) => {
@@ -15,10 +19,15 @@ router.get('/:id', (req, res) => {
   //consultar solo uno
 });
 
-router.post('/', (req, res) => {
-  const body = req.body;
-  //agregar
-})
+router.post('/:id',
+  validadorHandler(getEspecisShema, 'params'),
+  async (req, res) => {
+    const body = req.body;
+    const { id } = req.params;
+    const dataReturn = await service.update(id, body);
+    res.json(dataReturn);
+    //agregar
+  })
 
 router.patch('/:id', (req, res) => {
   const { id } = req.params;
@@ -31,10 +40,13 @@ router.delete('/:id', (req, res) => {
   //actulizar una parte o solo un parametro del objeto
 });
 
-router.put('/:id', (req, res) => {
-  const { id } = req.params;
-  const body = req.body;
-  //editar
-});
+router.put('/',
+  validadorHandler(createEspeciesSchema, 'body'),
+  async (req, res) => {
+    const body = req.body;
+    const data = await service.create(body);
+    res.json(data);
+    //editar
+  });
 
 module.exports = router;

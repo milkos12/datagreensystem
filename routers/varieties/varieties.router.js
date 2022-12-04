@@ -3,6 +3,7 @@ const boom = require('@hapi/boom');
 
 const VarientesService = require('../../service/varieties.service');
 const validadorHandler = require('./../../middlewares/validador.handler');
+const { logErrors } = require('../../middlewares/error.handler');
 const { createVarietiesSchema, updateVarietiesSchema, getVarietieSchema } = require('./../../schemas/varieties.schemas');
 
 

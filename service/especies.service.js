@@ -1,19 +1,40 @@
+const { models } = require('../libs/sequelize');
+
 class EspeciesService {
 
-  create() {
+  async create(data) {
+    const [especie, created] = await models.Especie.findOrCreate({
+      where: data
+    });
 
+    if (created == false) {
+      especie.message = "especie allready exists"
+    }
+
+
+    return especie;
   }
 
-  find() {
+  async find() {
+    const data = await models.Especie.findAll();
 
+    return data;
   }
 
   findOne() {
 
   }
 
-  update() {
-
+  async update(id, data) {
+    await models.Especie.update(
+      data,
+      {
+        where: {
+          id
+        }
+      }
+    );
+    return { id, 'body': data }
   }
 
   delete() {

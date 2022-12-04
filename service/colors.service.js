@@ -1,4 +1,5 @@
 const { models } = require('./../libs/sequelize');
+const boom = require('@hapi/boom');
 
 class ColorsService {
 
@@ -6,8 +7,13 @@ class ColorsService {
 
   }
 
-  create() {
-
+  async create(data) {
+    try {
+      const dataReturn = await models.Color.create(data);
+      return dataReturn;
+    } catch (err) {
+      throw boom.conflict('color already exists');
+    }
   }
 
   async find() {
@@ -19,7 +25,10 @@ class ColorsService {
 
   }
 
-  update() {
+  async update(data, id) {
+    await models.Color.update(data, { where: { id: id } });
+    const dataReturn = { id, 'body': data }
+    return dataReturn
 
   }
 

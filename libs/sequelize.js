@@ -12,6 +12,7 @@ const sequelize = new Sequelize(URI,{
   logging: true
 });
 
+sequelize.sync();
 setupModels(sequelize);
 
 module.exports = sequelize;

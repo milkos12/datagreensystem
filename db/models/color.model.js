@@ -11,6 +11,7 @@ const ColorSchema = {
   },
   name: {
     allowNull: false,
+    unique: true,
     type: DataTypes.STRING
   }
 }

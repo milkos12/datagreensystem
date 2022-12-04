@@ -11,7 +11,8 @@ const EspecieSchema = {
   },
   name: {
     allowNull: false,
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    unique: true
   }
 }
 
@@ -21,7 +22,7 @@ class Especie extends Model{
       sequelize,
       modelName: 'Especie',
       tableName: ESPECIE_TABLE,
-      timestamps: true
+      timestamps: false
     }
   }
 }
