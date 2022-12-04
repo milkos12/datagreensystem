@@ -14,7 +14,7 @@ function routerApi(app) {
   router.use('/colors', colorsRouter);
   router.use('/especies', especiesRouter);
   router.use('/farms', farmsRouter);
-  router.use('/gagues', gaugesRouter);
+  router.use('/gauges', gaugesRouter);
   router.use('/providers', providersRouter);
   router.use('/references', referenceRouter);
   router.use('/varietes', varietesRouter);

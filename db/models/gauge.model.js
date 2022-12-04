@@ -21,7 +21,7 @@ class Gauge extends Model {
       sequelize,
       modelName: 'gauge',
       tableName: GAUGE_TABLE,
-      timestamps: true
+      timestamps: false
     }
   }
 }

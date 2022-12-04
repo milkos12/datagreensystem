@@ -1,18 +1,50 @@
+
+const { models } = require('../libs/sequelize');
+
 class GaugesService {
 
-  create() {
+  async create(body) {
+    let [dataReturn, created] = await models.gauge.findOrCreate(
+      {
+        where: {
+          name: body.name
+        },
+        defaults: body
+      }
+    );
 
+    dataReturn = {
+      gauge: body,
+      create: created
+    };
+
+    return dataReturn;
   }
 
-  find() {
-
+  async find() {
+    const dataReturn = await models.gauge.findAll();
+    return dataReturn;
   }
 
   findOne() {
 
   }
 
-  update() {
+  async update(id, body) {
+    await models.gauge.update(body,
+      {
+        where: {
+          id
+        }
+      }
+    );
+
+    const dataReturn = {
+      id,
+      body
+    }
+
+    return dataReturn;
 
   }
 
