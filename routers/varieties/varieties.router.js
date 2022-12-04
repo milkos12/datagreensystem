@@ -5,6 +5,7 @@ const VarientesService = require('../../service/varieties.service');
 const validadorHandler = require('./../../middlewares/validador.handler');
 const { logErrors } = require('../../middlewares/error.handler');
 const { createVarietiesSchema, updateVarietiesSchema, getVarietieSchema } = require('./../../schemas/varieties.schemas');
+const { build } = require('joi');
 
 
 const router = express.Router();
@@ -49,12 +50,12 @@ router.delete('/:id',
     //actulizar una parte o solo un parametro del objeto
 });
 
-router.put('/:id',
-  validadorHandler(getVarietieSchema, 'params'),
-  validadorHandler(updateVarietiesSchema, 'body'),
-  (req, res) => {
-    const { id } = req.params;
+router.put('/',
+  validadorHandler(createVarietiesSchema, 'body'),
+  async (req, res) => {
     const body = req.body;
+    const dataReturn = await service.create(body);
+    res.json(dataReturn);
   //editar
 });
 

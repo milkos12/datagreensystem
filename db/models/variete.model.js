@@ -5,10 +5,10 @@ const VARIETE_TABLE = 'varietes';
 
 const VarietesSchema = {
   id: {
-    type: DataTypes.INTEGER,
-    aoutoIncrement: true,
+    allowNull: false,
+    autoIncrement: true,
     primaryKey: true,
-    allowNull: false
+    type: DataTypes.INTEGER
   },
   name: {
     type: DataTypes.STRING,
@@ -25,6 +25,7 @@ class Variete extends Model {
       sequelize,
       modelName: 'Variete',
       tableName: VARIETE_TABLE,
+      timestamps: false
     }
   }
 }

@@ -1,19 +1,49 @@
+
+const { models } = require('../libs/sequelize');
+
 class ProvidersService {
 
-  create() {
+  async create(body) {
+    let [dataReturn, created ]= await models.provider.findOrCreate({
+      where: {
+        name: body.name
+      },
+      defaults: body
+    });
+
+    dataReturn = {
+      provider: dataReturn,
+      create: created
+    }
+
+    return dataReturn
 
   }
 
-  find() {
-
+  async find() {
+   const dataReturn = await models.provider.findAll();
+   return dataReturn;
   }
 
   findOne() {
 
   }
 
-  update() {
+  async update(id, body) {
+    await models.provider.update(body,
+      {
+        where:{
+          id
+        }
+      }
+    );
 
+    const dataReturn = {
+      body,
+      id
+    }
+
+    return dataReturn
   }
 
   delete() {

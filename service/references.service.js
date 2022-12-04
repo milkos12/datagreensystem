@@ -1,19 +1,41 @@
+
+const { models } = require('../libs/sequelize');
+
 class ReferenceService {
 
-  create() {
+  async create(body) {
+    const dataReturn = await models.Reference.findOrCreate({
+      where:{
+        name: body.name
+      },
+      defaults: body
+    });
 
+    return dataReturn
   }
 
-  find() {
-
+  async find() {
+    const dataReturn =  await models.Reference.findAll();
+    return dataReturn
   }
 
   findOne() {
 
   }
 
-  update() {
+  async update(id, body) {
+    await models.Reference.update(body, {
+      where: {
+        id
+      }
+    });
 
+    const dataReturn = {
+      id,
+      body
+    };
+
+    return dataReturn;
   }
 
   delete() {

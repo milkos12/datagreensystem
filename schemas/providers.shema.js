@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const id = Joi.number();
-const name = Joi.string().min(3).max(45);
+const name = Joi.string().min(3).max(250);
 
 const createProvidersSchemas = Joi.object({
   name: name.required()

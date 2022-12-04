@@ -1,5 +1,5 @@
 
-const sequelize = require('../libs/sequelize')
+const { models } = require('../libs/sequelize')
 
 class VarietiesService {
 
@@ -7,18 +7,29 @@ class VarietiesService {
 
   }
 
-  create() {
+  async create(body) {
+    let [dataReturn, created] = await models.Variete.findOrCreate({
+      where:{
+        name: body.name
+      },
+      defaults: body
+    });
 
+    dataReturn = {
+      variete: dataReturn,
+      create: created
+    }
+
+    return dataReturn;
   }
 
   async find() {
-    const data = await sequelize.models.Variete.findAll();
+    const data = await models.Variete.findAll();
     return data;
   }
 
   async findOne(id) {
-    const data = await sequelize.models.Variete.findByPk(id);
-
+    const data = await models.Variete.findByPk(id);
     return data;
   }
 
